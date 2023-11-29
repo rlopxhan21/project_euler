@@ -1,0 +1,1 @@
+This repository contains my solutions to problems from [Project Euler](https://projecteuler.net/archives), a collection of challenging mathematical/ computational problems intended to be solved with computer programs.
