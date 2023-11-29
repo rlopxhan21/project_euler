@@ -6,6 +6,8 @@ we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below given target.
 originally the target is 1000.
+
+source: https://projecteuler.net/problem=1
 """
 import sys
 sys.path.append("../project_euler")
@@ -40,18 +42,19 @@ class Solution:
 
     # pylint: disable=C0116
     def main(self) -> int:
+        # using sum formula for arthematic series
         no_of_terms_of_num1 = (self.target - 1) // self.num1
-        sum_of_multiple_of_num1 = (no_of_terms_of_num1 * (self.num1 + no_of_terms_of_num1 * self.num1)) / 2
+        sum_of_multiple_of_num1 = (no_of_terms_of_num1 * (self.num1 + no_of_terms_of_num1 * self.num1)) // 2
 
         no_of_terms_of_num2 = (self.target - 1) // self.num2
-        sum_of_multiple_of_num2 = (no_of_terms_of_num2 * (self.num2 + no_of_terms_of_num2 * self.num2)) / 2
+        sum_of_multiple_of_num2 = (no_of_terms_of_num2 * (self.num2 + no_of_terms_of_num2 * self.num2)) // 2
 
         # Sum of multiple of num1 & num2 only when it intersect
         least_common_multiple_value = self.least_common_multiple(self.num1, self.num2)
         number_of_intersection = (self.target - 1) // least_common_multiple_value
         sum_of_intersection = (number_of_intersection * (least_common_multiple_value + number_of_intersection * least_common_multiple_value)) / 2
 
-        return int(sum_of_multiple_of_num1 + sum_of_multiple_of_num2 - sum_of_intersection)
+        return sum_of_multiple_of_num1 + sum_of_multiple_of_num2 - sum_of_intersection
 
 
 if __name__ == "__main__":
